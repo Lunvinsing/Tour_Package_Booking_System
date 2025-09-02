@@ -142,9 +142,9 @@ void UMenu(){
 void Create_new_packages(){
     ofstream New("packages.csv");
 
-    int idnum,id,price,duration;
+    int idnum,id,duration;
     string package,destination;
-
+    double price;
     cout << "Enter the amount of package:";
     cin >>idnum;
 
@@ -330,6 +330,7 @@ void Create_a_new_booking(){
             if(sub == 'Y' || sub == 'y'){
                 cin.ignore();
                 string username,phone,paymentM;
+                double totalprice,PricePerPerson;
                 int people;
 
                 cout<< "Enter your name:";
@@ -342,12 +343,27 @@ void Create_a_new_booking(){
                 cin>>people;
                 cin.ignore();
 
+                PricePerPerson = stod(row[2]);
+                totalprice = people * PricePerPerson;
+
+                cout<< "Total amunt to pay:"<< totalprice <<"$"<<endl;
+
+
                 cout<< "Enter payment method (Cash/Card/Online):";
                 getline(cin, paymentM);
 
 
 
-                fout << row[0] << "," << row[1] << "," << row[2] << "," << row[3] << "," << row[4] <<","<<username<<","<<phone<<","<<people<<","<<paymentM<<"\n";
+                fout << row[0] << "," 
+                << row[1] << "," 
+                << row[2] << "," 
+                << row[3] << "," 
+                << row[4] <<","
+                <<username<<","
+                <<phone<<","
+                <<people<<","
+                <<paymentM<<","
+                <<totalprice<<"\n";
                 cout << "Booking successful! Saved\n";
             } else {
                 cout << "Booking cancelled.\n";
@@ -417,6 +433,7 @@ void View_packages(){
         cout<< "Phone         :"<<row[6] << "\n";
         cout<< "People        :"<<row[7] << "\n";
         cout<< "Payment Method:"<<row[8] <<"\n";
+        cout<< "Total Price   :"<<row[9] <<"\n";
         cout<< R"(─────────────── ⋆⋅☆⋅⋆ ────────────────)"<<endl;
         break;  
     }
@@ -463,4 +480,3 @@ void Delete_packages1(){
     remove("bookings.csv");
     rename("bookingsnew.csv", "bookings.csv");
 }
-
