@@ -148,7 +148,7 @@ void Create_new_packages(){
     cout << "Enter the amount of package:";
     cin >>idnum;
 
-    cout << "Enter the ID of packages:"<<"ID, Package name, Price, Duration, Destination"<<endl;
+    cout << "Enter the ID of packages:"<<"ID, Package name, Price($), Duration(Day), Destination"<<endl;
     for(int i = 0; i < idnum; i++){
         cin>>id
            >>package
@@ -329,7 +329,7 @@ void Create_a_new_booking(){
 
             if(sub == 'Y' || sub == 'y'){
                 cin.ignore();
-                string username,phone;
+                string username,phone,paymentM;
                 int people;
 
                 cout<< "Enter your name:";
@@ -340,8 +340,14 @@ void Create_a_new_booking(){
 
                 cout<< "Enter number of people:";
                 cin>>people;
+                cin.ignore();
 
-                fout << row[0] << "," << row[1] << "," << row[2] << "," << row[3] << "," << row[4] <<","<<username<<","<<phone<<","<<people<<"\n";
+                cout<< "Enter payment method (Cash/Card/Online):";
+                getline(cin, paymentM);
+
+
+
+                fout << row[0] << "," << row[1] << "," << row[2] << "," << row[3] << "," << row[4] <<","<<username<<","<<phone<<","<<people<<","<<paymentM<<"\n";
                 cout << "Booking successful! Saved\n";
             } else {
                 cout << "Booking cancelled.\n";
@@ -402,14 +408,15 @@ void View_packages(){
             row.push_back(word);
         }
 
-        cout<< "ID           :" <<row[0]<<"\n";
-        cout<< "Package name :"<<row[1]<<"\n";
-        cout<< "Price($)     :"<<row[2]<<"/Person"<<"\n";
-        cout<< "Duration(Day):"<<row[3]<<"\n";
-        cout<< "Destination  :"<<row[4]<<"\n";
-        cout<< "Name         :"<<row[5] << "\n";
-        cout<< "Phone        :"<<row[6] << "\n";
-        cout<< "People       :"<<row[7] << "\n";
+        cout<< "ID            :" <<row[0]<<"\n";
+        cout<< "Package name  :"<<row[1]<<"\n";
+        cout<< "Price($)      :"<<row[2]<<"/Person"<<"\n";
+        cout<< "Duration(Day) :"<<row[3]<<"\n";
+        cout<< "Destination   :"<<row[4]<<"\n";
+        cout<< "Name          :"<<row[5] << "\n";
+        cout<< "Phone         :"<<row[6] << "\n";
+        cout<< "People        :"<<row[7] << "\n";
+        cout<< "Payment Method:"<<row[8] <<"\n";
         cout<< R"(─────────────── ⋆⋅☆⋅⋆ ────────────────)"<<endl;
         break;  
     }
